@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Test Execution Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>AI Test Execution Platform</h1>
+
+    <section class="card">
+        <h2>Project</h2>
+        <div class="row">
+            <select id="project-select"></select>
+            <input type="text" id="new-project-name" placeholder="New project name">
+            <button id="create-project-button">Create Project</button>
+        </div>
+    </section>
+
+    <section class="card" id="test-case-section" style="display:none;">
+        <div class="history-header">
+            <h2>Test Cases</h2>
+            <button id="show-add-form-button">+ Add Test Case</button>
+        </div>
+
+        <form id="test-case-form" style="display:none;">
+            <label>Name</label>
+            <input type="text" id="tc-name" required>
+            <label>Preconditions (one per line)</label>
+            <textarea id="tc-preconditions" rows="2"></textarea>
+            <label>Steps (one per line)</label>
+            <textarea id="tc-steps" rows="6"></textarea>
+            <label>Expected Result</label>
+            <textarea id="tc-expected-result" rows="2"></textarea>
+            <button type="submit">Save Test Case</button>
+        </form>
+
+        <table id="test-cases-table">
+            <thead><tr><th>Name</th><th>Last Result</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section class="card" id="history-section" style="display:none;">
+        <h2 id="history-title">Run History</h2>
+        <p id="run-status"></p>
+        <table id="history-table">
+            <thead><tr><th>Result</th><th>Reason</th><th>Timestamp</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
